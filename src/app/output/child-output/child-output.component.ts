@@ -7,11 +7,13 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class ChildOutputComponent implements OnInit {
   listStudent = [
-    {id: 1, name: 'Hùng'}, {id: 2, name: 'Vô Địch RaCode'}
-    ]
+    {id: 1, name: 'Nam'}, {id: 2, name: 'Vô Địch LOL'}
+  ];
   @Output()
   dataFromChild = new EventEmitter<any>();
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
     this.dataFromChild.emit(this.listStudent);

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-parent-input',
@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParentInputComponent implements OnInit {
   listStudent = [
-    {id: 1, name: 'Chính'}, {id:2, name: 'Bazo'}, {id: 3, name: 'Đi muộn'}
-  ]
-  constructor() { }
+    {id: 1, name: 'Nam'}, {id: 2, name: 'Bum'}, {id: 3, name: 'Ez'}
+  ];
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

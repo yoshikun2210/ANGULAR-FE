@@ -13,6 +13,7 @@ import {DialogComponent} from '../../dialog/dialog/dialog.component';
 export class UpdateAvatarComponent implements OnInit {
   singeAvatar: ChangeAvatar;
   checkUpload = false;
+
   constructor(private authService: AuthService,
               private tokenService: TokenService,
               private dialog: MatDialog) {
@@ -22,14 +23,14 @@ export class UpdateAvatarComponent implements OnInit {
   }
 
   changeAvatar($event: string) {
-      this.singeAvatar = new ChangeAvatar($event);
-      this.authService.updateAvatar(this.singeAvatar).subscribe(data =>{
-        if(data.message==='yes'){
-          this.checkUpload = true;
-          this.tokenService.setAvatar($event);
-          this.dialog.open(DialogComponent);
-          // location.reload()
-        }
-      })
+    this.singeAvatar = new ChangeAvatar($event);
+    this.authService.updateAvatar(this.singeAvatar).subscribe(data => {
+      if (data.message === 'yes') {
+        this.checkUpload = true;
+        this.tokenService.setAvatar($event);
+        this.dialog.open(DialogComponent);
+        // location.reload()
+      }
+    });
   }
 }

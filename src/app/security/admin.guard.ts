@@ -37,7 +37,7 @@ export class AdminGuard implements CanActivate, OnInit {
     if (this.tokenService.getToken()) {
       console.log('tokennnnnnnnnnnnnnnn --->', this.tokenService.getToken());
 
-  this.checkRoleGuard();
+      this.checkRoleGuard();
       // this.authService.checkRole().subscribe(role => {
       //   console.log('role ===========>', role.message);
       //   if (role.message === 'admin') {
@@ -54,11 +54,11 @@ export class AdminGuard implements CanActivate, OnInit {
       //   }
       // });
       console.log('this.checkRole ---> ', this.checkRole);
-  if(this.checkRole==='admin'){
+      if (this.checkRole === 'admin'){
     console.log('VAO CHECK KHONG ---------------------------');
     return true;
   } else {
-    this.router.navigate([''])
+    this.router.navigate(['']);
   }
 
       // console.log('roles --->', this.tokenService.getRole());

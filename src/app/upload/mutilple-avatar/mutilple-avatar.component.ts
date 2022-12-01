@@ -14,7 +14,9 @@ export class MutilpleAvatarComponent implements OnInit {
   checkUploadMultiple = false;
   @Output()
   arrUrl = new EventEmitter<string[]>();
-  constructor(private afService: AngularFireStorage) { }
+
+  constructor(private afService: AngularFireStorage) {
+  }
 
   ngOnInit(): void {
   }
@@ -23,20 +25,23 @@ export class MutilpleAvatarComponent implements OnInit {
     console.log('$event --->', $event);
     this.selectFile = $event.target.files;
   }
-  upLoad(){
+
+  upLoad() {
     this.checkUploadMultiple = true;
+    // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < this.selectFile.length; i++) {
       this.arrFileInFireBase = this.afService.ref(this.selectFile[i].name);
-      this.arrFileInFireBase.put(this.selectFile[i]).then(data =>{
+      this.arrFileInFireBase.put(this.selectFile[i]).then(data => {
         return data.ref.getDownloadURL();
-      }).then(url=>{
+      }).then(url => {
         console.log('URL --->', url);
         this.checkUploadMultiple = false;
         this.arrUrlFromFireBase.push(url);
         this.arrUrl.emit(this.arrUrlFromFireBase);
-      }).catch(error =>{
+        // tslint:disable-next-line:no-shadowed-variable
+      }).catch(error => {
         console.log(`Upload Failed! ${error}`);
-      })
+      });
     }
     console.log('============================>', this.arrUrlFromFireBase);
   }
